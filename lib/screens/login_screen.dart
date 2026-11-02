@@ -47,8 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
     // loginFailed da xato matni ko'rsatiladi; maydonlar tozalanmaydi.
     final String message = widget.controller.state == AppState.loginFailed
         ? "Kirish ma'lumotlari noto'g'ri. Qayta kiriting."
-        : "Qurilmangizga kirish uchun ma'lumotlar kerak. "
-            "Ular qurilma orqasidagi stikerda yozilgan.";
+        : "Router administratorining login va parolini kiriting.";
 
     return Scaffold(
       body: Padding(
@@ -57,6 +56,14 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(message, textAlign: TextAlign.center),
+            const SizedBox(height: 12),
+            Text(
+              "Xavfsizlik: routerga kirish ma'lumotlari shifrlanmagan "
+              "HTTP orqali yuboriladi. Faqat ishonchli Wi-Fi tarmog'ida "
+              "davom eting.",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Theme.of(context).colorScheme.error),
+            ),
             const SizedBox(height: 24),
             const Text('Login'),
             TextField(controller: _user),
